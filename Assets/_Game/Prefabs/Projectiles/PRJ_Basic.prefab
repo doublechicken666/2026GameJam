@@ -5085,7 +5085,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.5337467, g: 0, b: 1, a: 1}
-        key1: {r: 0.005036789, g: 0, b: 0.009433985, a: 1}
+        key1: {r: 0, g: 0, b: 0, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -14674,7 +14674,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2589355221177218525}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 0.3
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -15503,7 +15503,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 40
+      scalar: 0
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -29237,6 +29237,7 @@ GameObject:
   - component: {fileID: 8513972970859030065}
   - component: {fileID: 6427631935650125018}
   - component: {fileID: 8561421544116068164}
+  - component: {fileID: 2404459494431039221}
   m_Layer: 0
   m_Name: PRJ_Basic
   m_TagString: Untagged
@@ -29431,16 +29432,34 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: -4
-      outSlope: -4
+      value: 0
+      inSlope: -8
+      outSlope: -8
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 0.125
+      value: -1
+      inSlope: -0.008340239
+      outSlope: -0.008340239
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.40987384
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 0.25
       value: 0
+      inSlope: 12
+      outSlope: 12
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.375
+      value: 2
       inSlope: 0
       outSlope: 0
       tangentMode: 34
@@ -29449,7 +29468,16 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.5
-      value: 1
+      value: 0
+      inSlope: -16
+      outSlope: -16
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.625
+      value: -2
       inSlope: 0
       outSlope: 0
       tangentMode: 34
@@ -29459,6 +29487,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.75
       value: 0
+      inSlope: 20
+      outSlope: 20
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.875
+      value: 3
       inSlope: 0
       outSlope: 0
       tangentMode: 34
@@ -29467,9 +29504,9 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 4
-      outSlope: 4
+      value: 0
+      inSlope: -24
+      outSlope: -24
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -29477,6 +29514,22 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  trailMat: {fileID: 2100000, guid: 7afc6ee283ef9ce46bf550a0b9de58a2, type: 2}
+--- !u!114 &2404459494431039221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5794516414343774910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a97b95b3ee39f6499701481773b412e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMask: 0
+  autoSetDirection: 1
+  testDirection: {x: 1, y: 0}
 --- !u!1 &8330380028706386083
 GameObject:
   m_ObjectHideFlags: 0

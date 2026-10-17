@@ -33,6 +33,8 @@ namespace Spotlight.Presentation
         private Gradient gradThunder;
         private Gradient gradThunder_over;
 
+        [SerializeField] private Material trailMat;
+        private int lastAppliedMask = -1; //脏位
         private void Awake()
         {
             // 火 - 黄→红→黑
@@ -53,7 +55,7 @@ namespace Spotlight.Presentation
                 new GradientColorKey[] {
                 new GradientColorKey(new Color(1f, 1f, 1f), 0f),
                 new GradientColorKey(new Color(1f, 0.67f, 0f), 0.27f),
-                new GradientColorKey(new Color(1f, 15f, 0f), 0.6f),
+                new GradientColorKey(new Color(1f, 0.15f, 0f), 0.6f),
                 new GradientColorKey(new Color(0f, 0f, 0f), 1f)
                 },
                 new GradientAlphaKey[] {
@@ -102,40 +104,16 @@ namespace Spotlight.Presentation
                 }
             );
 
-            gradEarth_over = new Gradient();
-            gradEarth_over.SetKeys(
-                new GradientColorKey[] {
-                new GradientColorKey(new Color(0.75f, 0.57f, 0.24f), 0f),
-                new GradientColorKey(new Color(0.54f, 0.45f, 0.31f), 1f)
-                },
-                new GradientAlphaKey[] {
-                new GradientAlphaKey(0.9f, 0f),
-                new GradientAlphaKey(0f, 1f)
-                }
-            );
-
             // 木 - 绿
             gradWood = new Gradient();
             gradWood.SetKeys(
                 new GradientColorKey[] {
-                new GradientColorKey(new Color(0.24f, 0.75f, 0.4f), 0f),
-                new GradientColorKey(new Color(0.1f, 0.4f, 0.15f), 1f)
+                new GradientColorKey(new Color(0.57f, 0.97f, 0.45f), 0f),
+                new GradientColorKey(new Color(0.36f, 0.63f, 0.3f), 1f)
                 },
                 new GradientAlphaKey[] {
-                new GradientAlphaKey(0.9f, 0f),
-                new GradientAlphaKey(0f, 1f)
-                }
-            );
-
-            gradWood_over = new Gradient();
-            gradWood_over.SetKeys(
-                new GradientColorKey[] {
-                new GradientColorKey(new Color(0.24f, 0.75f, 0.4f), 0f),
-                new GradientColorKey(new Color(0.1f, 0.4f, 0.15f), 1f)
-                },
-                new GradientAlphaKey[] {
-                new GradientAlphaKey(0.9f, 0f),
-                new GradientAlphaKey(0f, 1f)
+                new GradientAlphaKey(1f, 0f),
+                new GradientAlphaKey(1f, 1f)
                 }
             );
 
@@ -143,23 +121,24 @@ namespace Spotlight.Presentation
             gradWind = new Gradient();
             gradWind.SetKeys(
                 new GradientColorKey[] {
-                new GradientColorKey(new Color(0.35f, 0.88f, 0.72f), 0f),
-                new GradientColorKey(new Color(0.2f, 0.6f, 0.5f), 1f)
+                new GradientColorKey(new Color(1f, 1f, 1f), 0f),
+                new GradientColorKey(new Color(1f, 1f, 1f), 1f)
                 },
                 new GradientAlphaKey[] {
-                new GradientAlphaKey(0.8f, 0f),
-                new GradientAlphaKey(0f, 1f)
+                new GradientAlphaKey(1f, 0f),
+                new GradientAlphaKey(1f, 1f)
                 }
             );
 
             gradWind_over = new Gradient();
             gradWind_over.SetKeys(
                 new GradientColorKey[] {
-                new GradientColorKey(new Color(0.35f, 0.88f, 0.72f), 0f),
-                new GradientColorKey(new Color(0.2f, 0.6f, 0.5f), 1f)
+                new GradientColorKey(new Color(0f, 0.8f, 0.48f), 0f),
+                new GradientColorKey(new Color(0f, 0f, 0f), 1f)
                 },
                 new GradientAlphaKey[] {
-                new GradientAlphaKey(0.8f, 0f),
+                new GradientAlphaKey(1f, 0f),
+                new GradientAlphaKey(1f, 0.56f),
                 new GradientAlphaKey(0f, 1f)
                 }
             );
@@ -168,25 +147,24 @@ namespace Spotlight.Presentation
             gradThunder = new Gradient();
             gradThunder.SetKeys(
                 new GradientColorKey[] {
-                new GradientColorKey(new Color(0.69f, 0.39f, 1f), 0f),
-                new GradientColorKey(Color.white, 0.5f),
-                new GradientColorKey(new Color(0.4f, 0.1f, 0.8f), 1f)
+                new GradientColorKey(new Color(0.53f, 0f, 1f), 0f),
+                new GradientColorKey(new Color(0f, 0f, 0f), 1f)
                 },
                 new GradientAlphaKey[] {
                 new GradientAlphaKey(1f, 0f),
-                new GradientAlphaKey(0f, 1f)
+                new GradientAlphaKey(1f, 1f)
                 }
             );
 
             gradThunder_over = new Gradient();
             gradThunder_over.SetKeys(
                 new GradientColorKey[] {
-                new GradientColorKey(new Color(0.69f, 0.39f, 1f), 0f),
-                new GradientColorKey(Color.white, 0.5f),
-                new GradientColorKey(new Color(0.4f, 0.1f, 0.8f), 1f)
+                new GradientColorKey(new Color(1f, 1f, 1f), 0f),
+                new GradientColorKey(new Color(1f, 1f, 1f), 1f)
                 },
                 new GradientAlphaKey[] {
                 new GradientAlphaKey(1f, 0f),
+                new GradientAlphaKey(1f, 0.67f),
                 new GradientAlphaKey(0f, 1f)
                 }
             );
@@ -220,6 +198,9 @@ namespace Spotlight.Presentation
 
         public void SetElements(int appliedElementMask)
         {
+            if (lastAppliedMask == appliedElementMask) return;  // ← 没变就跳过
+            lastAppliedMask = appliedElementMask;
+
             if (ElementOverlay == null) return;
 
             int index = FirstKnownElement(appliedElementMask);
@@ -233,6 +214,8 @@ namespace Spotlight.Presentation
 
         public void ResetVisual()
         {
+            lastAppliedMask = -1;
+
             if (VisualRoot != null)
                 VisualRoot.localRotation = Quaternion.Euler(0f, 0f, 0f);
 
@@ -292,17 +275,25 @@ namespace Spotlight.Presentation
                 return;
             }
 
+            if (sharedPS != null)
+            {
+                sharedPS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+
             if (activeElements.Length == 1)
             {
                 switch (activeElements[0])
                 {
-                    case 0: /* 水 */ break;
-
-                    case 1: /* 火 */ break;
-                    case 2: /* 土 */ break;
-                    case 3: /* 木 */ break;
-                    case 4: /* 风 */ break;
-                    case 5: /* 雷 */ break;
+                    case 0: SetWater(); break;
+                    case 1: SetFire(); break;
+                    case 2: SetEarth(); break;
+                    case 3: SetWood(); break;
+                    case 4: SetWind(); break;
+                    case 5: SetThunder(); break;
+                }
+                if (sharedPS != null)
+                {
+                    sharedPS.Play(true);
                 }
 
                 return;
@@ -328,9 +319,8 @@ namespace Spotlight.Presentation
         }
 
         private void SetWater()
-        { 
+        {
             var main = sharedPS.main;
-            main.duration = 5f;
             main.startLifetime = new ParticleSystem.MinMaxCurve(0.3f, 0.8f);
             main.startSpeed = 1f;
             main.startSize = new ParticleSystem.MinMaxCurve(0.03f, 0.07f);
@@ -373,7 +363,6 @@ namespace Spotlight.Presentation
         private void SetFire()
         {
             var main = sharedPS.main;
-            main.duration = 5f;
             main.startLifetime = 0.5f;
             main.startSpeed = 1f;
             main.startSize = 0.1f;
@@ -415,9 +404,8 @@ namespace Spotlight.Presentation
         private void SetEarth()
         {
             var main = sharedPS.main;
-            main.duration = 5f;
             main.startLifetime = 0.8f;
-            main.startSpeed = new ParticleSystem.MinMaxCurve(0.6f, 0.1f);
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0.6f, 1f);
             main.startSize = new ParticleSystem.MinMaxCurve(0.08f, 0.15f);
             main.startRotation = new ParticleSystem.MinMaxCurve(0f, 360f * Mathf.Deg2Rad);
             ParticleSystem.MinMaxGradient mg = new ParticleSystem.MinMaxGradient(gradEarth);
@@ -437,8 +425,8 @@ namespace Spotlight.Presentation
 
             var vel = sharedPS.velocityOverLifetime;
             vel.enabled = true;
-            vel.x = new ParticleSystem.MinMaxCurve(0f);
-            vel.y = new ParticleSystem.MinMaxCurve(0f);
+            vel.x = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Constant(0f, 1f, 0f));
+            vel.y = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Constant(0f, 1f, 0f));
             vel.z = new ParticleSystem.MinMaxCurve(1f, ZCurve_Earth);
 
             var col = sharedPS.colorOverLifetime;
@@ -459,7 +447,6 @@ namespace Spotlight.Presentation
         private void SetWood()
         {
             var main = sharedPS.main;
-            main.duration = 0.3f;
             main.startLifetime = 1f;
             main.startSpeed = 0.5f;
             main.startSize = 0.1f;
@@ -471,7 +458,7 @@ namespace Spotlight.Presentation
             var emi = sharedPS.emission;
             emi.enabled = true;
             emi.rateOverTime = 0f;
-            emi.SetBurst(0, new ParticleSystem.Burst(0f, 10, 10, 1, 0.01f));
+            emi.SetBursts(new ParticleSystem.Burst[] { new ParticleSystem.Burst(0f, 10, 10, 1, 0.01f) });
 
             var sha = sharedPS.shape;
             sha.enabled = true;
@@ -497,10 +484,9 @@ namespace Spotlight.Presentation
             ren.pivot = new Vector3(0f, 0f, 0f);
         }
 
-        private void Wind()
+        private void SetWind()
         {
             var main = sharedPS.main;
-            main.duration = 5f;
             main.startLifetime = 0.5f;
             main.startSpeed = 1f;
             main.startSize = 0.01f;
@@ -520,9 +506,9 @@ namespace Spotlight.Presentation
 
             var vel = sharedPS.velocityOverLifetime;
             vel.enabled = true;
-            vel.x = new ParticleSystem.MinMaxCurve(0f);
-            vel.y = new ParticleSystem.MinMaxCurve(0f);
-            vel.z = new ParticleSystem.MinMaxCurve(1f, ZCurve_Earth);
+            vel.x = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Constant(0f, 1f, 0f));
+            vel.y = new ParticleSystem.MinMaxCurve(1f, YCurve_Wind);
+            vel.z = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Constant(0f, 1f, 0f));
 
             var col = sharedPS.colorOverLifetime;
             col.enabled = true;
@@ -540,12 +526,12 @@ namespace Spotlight.Presentation
             var ren = sharedPS.GetComponent<ParticleSystemRenderer>();
             ren.renderMode = ParticleSystemRenderMode.Billboard;
             ren.pivot = new Vector3(0f, 0f, 0f);
+            ren.trailMaterial = trailMat;
         }
 
         private void SetThunder()
         {
             var main = sharedPS.main;
-            main.duration = 5f;
             main.startLifetime = new ParticleSystem.MinMaxCurve(0.3f, 0.6f);
             main.startSpeed = 1f;
             main.startSize = 0.01f;
@@ -584,6 +570,7 @@ namespace Spotlight.Presentation
             var ren = sharedPS.GetComponent<ParticleSystemRenderer>();
             ren.renderMode = ParticleSystemRenderMode.Billboard;
             ren.pivot = new Vector3(0f, 0f, 0f);
+            ren.trailMaterial = trailMat;
         }
     }
 }
